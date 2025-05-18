@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import './FixturesList.css'; // Import external stylesheet
 
 export default function FixturesList({ fixtures, onSelect }) {
@@ -13,7 +14,7 @@ export default function FixturesList({ fixtures, onSelect }) {
             onClick={() => onSelect(fixture)}
             className="fixture-item"
           >
-            {fixture.homeTeam} vs {fixture.awayTeam} ({fixture.date})
+            {fixture.home_team} vs {fixture.away_team} ({moment(fixture.fixture_datetime).format('YYYY-MM-DD HH:mm:ss')})
           </li>
         ))
       )}
