@@ -1,0 +1,32 @@
+/* Container list styles */
+.fixtures-list {
+    list-style: none;
+    padding-left: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    margin: 0;
+  }
+  
+  /* Style for the "no result" message */
+  .no-results {
+    color: #888;
+    font-style: italic;
+    padding: 10px;
+  }
+  
+  /* List item for each fixture */
+  .fixture-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  /* Hover effect */
+  .fixture-item:hover {
+    background-color: #f0f0f0;
+  }
+  

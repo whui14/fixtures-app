@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './FileUpload.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://fixtures-backend.onrender.com';
 
@@ -6,13 +7,11 @@ export default function FileUpload() {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
 
-  // Handle file select
   const onFileChange = (e) => {
     setFile(e.target.files[0]);
     setMessage('');
   };
 
-  // Upload file to backend
   const onUpload = async () => {
     if (!file) {
       setMessage('Please select a CSV file first.');
@@ -36,20 +35,33 @@ export default function FileUpload() {
   };
 
   return (
-    <section>
+    <section className="upload-section">
       <h2>Upload Fixtures CSV</h2>
-      <label htmlFor="file-upload" style={{ cursor: 'pointer', color: 'blue' }}>
+
+      <label htmlFor="file-upload" className="file-label">
         Choose File
       </label>
       <input
         id="file-upload"
         type="file"
         accept=".csv"
-        style={{ display: 'none' }}
+        className="file-input"
         onChange={onFileChange}
       />
-      <button onClick={onUpload} style={{ marginLeft: 10, padding: '6px 12px' }}>Upload</button>
-      {message && <p style={{ color: message.includes('successful') ? 'green' : 'red' }}>{message}</p>}
+
+      {file && (
+        <p className="file-selected">
+          File selected: <strong>{file.name}</strong>. Click 'Upload' to continue.
+        </p>
+      )}
+
+      <button onClick={onUpload} className="upload-button">Upload</button>
+
+      {message && (
+        <p className={message.includes('successful') ? 'message success' : 'message error'}>
+          {message}
+        </p>
+      )}
     </section>
   );
 }

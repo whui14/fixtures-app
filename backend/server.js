@@ -23,10 +23,13 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Define Schema & Model
 const fixtureSchema = new mongoose.Schema({
-  date: String,
-  homeTeam: String,
-  awayTeam: String,
-  score: String,
+  fixture_mid: String,
+  season: String,
+  competition_name: String,
+  fixture_datetime: String,
+  fixture_round: String,
+  home_team: String,
+  away_team: String,
 });
 const Fixture = mongoose.model('Fixture', fixtureSchema);
 
@@ -60,12 +63,13 @@ app.get('/search', async (req, res) => {
   try {
     const fixtures = await Fixture.find({
       $or: [
-        { homeTeam: new RegExp(q, 'i') },
-        { awayTeam: new RegExp(q, 'i') },
+        { home_team: new RegExp(q, 'i') },
+        { away_team: new RegExp(q, 'i') },
       ],
     });
     res.json(fixtures);
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: 'Search failed' });
   }
 });

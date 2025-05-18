@@ -1,0 +1,24 @@
+/* Container for fixture details */
+.fixture-details {
+    padding: 15px;
+    background-color: #e6f0ff;
+    border-radius: 4px;
+    margin-top: 20px;
+    border: 1px solid #0070f3;
+  }
+  
+  /* Close button styles */
+  .close-button {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    background-color: #005ec2;
+  }
+  
